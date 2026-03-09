@@ -772,3 +772,89 @@
       padding: 0.4rem 0.75rem;
       background: var(--bg-elevated);
       border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      white-space: nowrap;
+      margin-bottom: 0.5rem;
+      z-index: 10;
+    }
+
+    .copy-btn {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      padding: 0.35rem 0.6rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .expiry-warn {
+      font-size: 0.8rem;
+      color: var(--accent-amber);
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="grid-bg"></div>
+
+  <header>
+    <div class="logo">Yobba <span>×</span> AftermathXS</div>
+    <nav>
+      <a href="#swap" class="active">Swap</a>
+      <a href="#bridge">Bridge</a>
+      <a href="#history">History</a>
+      <a href="#settings">Settings</a>
+      <button class="wallet-btn" id="walletBtn">Connect Wallet</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Cross-Chain DEX Aggregator</h1>
+      <p>Best routes across Sui and Solana. Swap and bridge in one place with integrated liquidity.</p>
+      <div class="chains-pill"><strong>Sui</strong> + <strong>Solana</strong> • Aggregated liquidity • Secure bridge</div>
+    </section>
+
+    <div class="card">
+      <div class="status-bar">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Connecting to AF_99…</span>
+      </div>
+
+      <div class="tabs">
+        <button type="button" class="active" data-tab="swap">Swap</button>
+        <button type="button" data-tab="bridge">Bridge</button>
+      </div>
+
+      <div id="swapPanel" class="tab-panel active">
+        <div class="card-title">Get best quote across DEXes</div>
+        <div class="chain-select-row">
+          <label>Network <select id="chainSelect">
+            <option value="0x53455">Sui Mainnet</option>
+            <option value="0x534F4C4C">Solana Mainnet</option>
+          </select></label>
+        </div>
+        <div class="swap-section">
+          <div class="token-row">
+            <input type="text" id="amountIn" placeholder="0.0" inputmode="decimal" />
+            <button type="button" class="token-select" id="tokenInBtn">
+              <span id="tokenInSymbol">SUI</span> ▼
+            </button>
+          </div>
+          <div class="swap-arrow" id="swapArrow" title="Switch">⇅</div>
+          <div class="token-row">
+            <input type="text" id="amountOut" placeholder="0.0" readonly />
+            <button type="button" class="token-select" id="tokenOutBtn">
+              <span id="tokenOutSymbol">USDC</span> ▼
+            </button>
+          </div>
+        </div>
+        <div class="slippage-row">
