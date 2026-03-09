@@ -858,3 +858,89 @@
           </div>
         </div>
         <div class="slippage-row">
+          <label>Slippage</label>
+          <select id="slippageSelect">
+            <option value="0.5">0.5%</option>
+            <option value="1" selected>1%</option>
+            <option value="2">2%</option>
+            <option value="3">3%</option>
+            <option value="5">5%</option>
+          </select>
+        </div>
+        <div class="quote-summary" id="quoteSummary">
+          <div><span>Rate</span><span class="value" id="quoteRate">—</span></div>
+          <div><span>Fee</span><span class="value" id="quoteFee">—</span></div>
+          <div><span>Min. received</span><span class="value highlight" id="quoteMinOut">—</span></div>
+        </div>
+        <div class="expiry-warn" id="quoteExpiryWarn" style="display: none;"></div>
+        <button type="button" class="btn-primary" id="swapBtn" disabled>Enter amount to get quote</button>
+      </div>
+
+      <div id="bridgePanel" class="tab-panel">
+        <div class="card-title">Bridge between Sui and Solana</div>
+        <div class="bridge-form">
+          <label>From chain</label>
+          <select id="bridgeFromChain">
+            <option value="0x53455">Sui</option>
+            <option value="0x534F4C4C">Solana</option>
+          </select>
+          <label>To chain</label>
+          <select id="bridgeToChain">
+            <option value="0x53455">Sui</option>
+            <option value="0x534F4C4C">Solana</option>
+          </select>
+          <label>Amount</label>
+          <input type="text" id="bridgeAmount" placeholder="0.0" inputmode="decimal" />
+          <label>Recipient (0x…)</label>
+          <input type="text" id="bridgeRecipient" placeholder="0x..." />
+          <div class="quote-summary" id="bridgeQuoteSummary">
+            <div><span>Estimated received</span><span class="value" id="bridgeEstOut">—</span></div>
+            <div><span>Relay fee</span><span class="value" id="bridgeRelayFee">—</span></div>
+          </div>
+          <button type="button" class="btn-primary" id="bridgeQuoteBtn">Get bridge quote</button>
+          <button type="button" class="btn-primary" id="bridgeInitBtn" disabled>Initiate bridge</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="routeCard" style="display: none;">
+      <div class="card-title">Route steps</div>
+      <div class="route-steps" id="routeSteps"></div>
+    </div>
+
+    <div id="alertContainer"></div>
+
+    <div class="card">
+      <div class="card-title">Platform stats</div>
+      <div class="stats-row">
+        <div class="stat-box"><div class="value" id="statQuotes">0</div><div class="label">Quotes (session)</div></div>
+        <div class="stat-box"><div class="value" id="statSwaps">0</div><div class="label">Swaps</div></div>
+        <div class="stat-box"><div class="value" id="statBridges">0</div><div class="label">Bridges</div></div>
+      </div>
+    </div>
+
+    <section class="bridge-section">
+      <div class="card">
+        <div class="card-title">Recent activity</div>
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>From → To</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody">
+            <tr><td colspan="4" class="text-muted">No activity yet. Swaps and bridges will appear here.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="settingsSection" class="card" style="display: none;">
+      <div class="card-title">Settings</div>
+      <div class="settings-section">
+        <h4>API base URL (AF_99 backend)</h4>
+        <input type="text" class="api-base-input" id="apiBaseUrl" placeholder="http://localhost:9947" />
+      </div>
